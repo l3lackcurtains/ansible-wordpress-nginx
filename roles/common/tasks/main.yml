@@ -1,0 +1,10 @@
+- name: Update apt
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: Install python packages
+  apt:
+    name:
+      ["python3-pip", "python3-mysqldb", "python3-apt", "libmysqlclient-dev"]
+    state: present

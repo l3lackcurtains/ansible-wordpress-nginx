@@ -1,0 +1,32 @@
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/html/wordpress;
+
+        index index.php index.html index.htm index.nginx-debian.html;
+
+        client_max_body_size 256M;
+
+        # proxy_buffers 8 16k;
+        # proxy_buffer_size 32k; 
+        # fastcgi_buffers 8 16k; 
+        # fastcgi_buffer_size 32k;
+
+        server_name {{ host_name }};
+
+        location / {
+                try_files $uri $uri/ /index.php$is_args$args;
+        }
+
+        location ~ \.php$ {
+               include snippets/fastcgi-php.conf;
+               fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        }
+
+        location ~ /\.ht {
+               deny all;
+        }
+}
+

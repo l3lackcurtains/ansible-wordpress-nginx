@@ -1,0 +1,19 @@
+- name: Install mysql
+  apt:
+    name: ["mysql-server", "libmysqlclient-dev"]
+    state: present
+
+- name: Upgrade Pip
+  pip:
+    name: pip
+    state: latest
+
+- name: Install the Python mysql module
+  pip:
+    name: ["mysqlclient"]
+
+- name: Restart Mysql
+  service:
+    name: mysql
+    state: restarted
+    enabled: yes

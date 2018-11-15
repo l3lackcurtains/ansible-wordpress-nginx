@@ -1,0 +1,10 @@
+- hosts: webhost
+  user: root
+  roles:
+    - users
+    - common
+    - mysql
+    - nginx
+    - php-fpm
+    - wordpress
+    - wpcli

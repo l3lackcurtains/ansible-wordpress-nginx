@@ -1,0 +1,21 @@
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: latest
+
+- name: Add {{ ssh_user }} to www-data group
+  user:
+    name: "{{ ssh_user }}"
+    groups: www-data
+    append: yes
+
+- name: Use nginx configuration for wordpress
+  template:
+    src: default
+    dest: /etc/nginx/sites-available/default
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
+    enabled: yes

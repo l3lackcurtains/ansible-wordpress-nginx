@@ -1,0 +1,10 @@
+- name: Install php-fpm
+  apt:
+    name: ["php7.2", "php7.2-fpm", "php7.2-mysql"]
+    state: present
+
+- name: Restart php-fpm
+  service:
+    name: php7.2-fpm
+    state: restarted
+    enabled: yes

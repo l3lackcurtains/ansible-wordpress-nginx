@@ -1,0 +1,38 @@
+- name: Create admin user
+  user:
+    name: "{{ ssh_user }}"
+    comment: "Administrator account"
+    state: present
+    groups: "{{ ssh_groups }}"
+    shell: /bin/bash
+    append: yes
+    createhome: yes
+
+- name: Deploy ssh public key
+  authorized_key:
+    user: "{{ ssh_user }}"
+    key: "{{ ansible_ssh_pub_key }}"
+
+- name: "Enable including files from sudoers.d"
+  lineinfile:
+    path: "/etc/sudoers"
+    regexp: "^#includedir /etc/sudoers.d"
+    line: "#includedir /etc/sudoers.d"
+    state: "present"
+    backup: True
+
+- name: Disable sudoers.d
+  lineinfile:
+    path: "/etc/sudoers"
+    regexp: "^#includedir /etc/sudoers.d"
+    line: "#includedir /etc/sudoers.d"
+    state: "absent"
+    backup: True
+
+- name: "Enable passwordless sudo"
+  copy:
+    content: "%{{ ssh_user }} ALL=(ALL) NOPASSWD:ALL"
+    dest: "/etc/sudoers.d/{{ ssh_user }}"
+    owner: "root"
+    group: "root"
+    mode: "0440"
