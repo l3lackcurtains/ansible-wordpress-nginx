@@ -2,11 +2,11 @@
 
 Ansible Playbook for automating wordpress website setup in NGINX server.
 
-**Server Stack**
+**What's included**
 
 - Nginx
-- Php-fpm
-- Mysql
+- Php 7.2
+- Mysql DB
 - WP-Cli
 
 #### Step 1: Update Playbook Hosts
