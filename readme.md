@@ -18,7 +18,7 @@ Change the IP Address with your custom IP address or localhost
 142.93.214.145 ansible_python_interpreter=/usr/bin/python3
 ```
 
-#### Step 2: Update Playbook Variables
+#### Step 2: Configure automation by updating playbook variables
 
 Update variables with custom data from **./group_vars/all.yml**
 
