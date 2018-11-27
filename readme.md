@@ -23,22 +23,22 @@ Change the IP Address with your custom IP address or localhost
 Update variables with custom data from **./group_vars/all.yml**
 
 ```yaml
-# ansible setup
+# ansible public and private keys
 ansible_ssh_pub_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 ansible_ssh_private_key_file: ~/.ssh/id_rsa
 
-# sudo user
+# sudo user and group
 ssh_user: ansible
 ssh_groups: "sudo"
 
-# Wordpress Database setup
+# Wordpress Database Information
 host_name: "142.93.214.145"
 wp_db_name: wordpress1
 wp_db_user: wordpress
 wp_db_password: w0rdpr355
 wp_db_prefix: wp_
 
-# Wp website setup
+# Wordpress Website Information
 wp_title: Demo Beta Website
 wp_admin_user: admin
 wp_admin_password: admin450
