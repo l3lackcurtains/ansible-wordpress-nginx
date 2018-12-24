@@ -33,13 +33,13 @@ ssh_groups: "sudo"
 
 # Wordpress Database Information
 host_name: "142.93.214.145"
-wp_db_name: wordpress1
-wp_db_user: wordpress
+wp_db_name: wordpress
+wp_db_user: admin
 wp_db_password: w0rdpr355
 wp_db_prefix: wp_
 
 # Wordpress Website Information
-wp_title: Demo Beta Website
+wp_title: Demo Website
 wp_admin_user: admin
 wp_admin_password: admin450
 wp_admin_email: admin@example.com
